@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Patient - Patient Information System</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex">
+
+  <div id="sidebar"></div>
+
+  <main class="flex-1 ml-56 p-8">
+
+    <!-- Top bar -->
+    <div class="flex items-center gap-3 mb-6">
+      <a href="index.html" class="text-gray-400 hover:text-gray-600 text-sm">← Back</a>
+      <h2 class="text-xl font-semibold text-gray-800">Edit Patient</h2>
+    </div>
+
+    <div class="bg-white rounded-xl shadow-sm p-6 max-w-2xl">
+
+      <!-- Messages -->
+      <p id="error-msg"   class="text-red-500 text-sm mb-4 hidden"></p>
+      <p id="success-msg" class="text-green-500 text-sm mb-4 hidden"></p>
+
+      <!-- Personal Info -->
+      <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-4">Personal Information</h3>
+      <div class="grid grid-cols-2 gap-4 mb-6">
+
+        <div>
+          <label class="block text-sm font-medium text-gray-600 mb-1">Full Name <span class="text-red-400">*</span></label>
+          <input type="text" id="name" placeholder="Juan Dela Cruz"
+            class="w-full border border-gray-200 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-600 mb-1">Birthdate</label>
+          <input type="date" id="birthdate"
+            class="w-full border border-gray-200 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-600 mb-1">Contact Number</label>
+          <input type="text" id="contact" placeholder="09123456789"
+            class="w-full border border-gray-200 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-600 mb-1">Address</label>
+          <input type="text" id="address" placeholder="Cebu City"
+            class="w-full border border-gray-200 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+
+      </div>
+
+      <hr class="border-gray-100 mb-6">
+
+      <!-- Medical Info -->
+      <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-4">Medical Information</h3>
+      <div class="grid grid-cols-2 gap-4 mb-6">
+
+        <div>
+          <label class="block text-sm font-medium text-gray-600 mb-1">Blood Type</label>
+          <select id="blood_type"
+            class="w-full border border-gray-200 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            <option value="">Select blood type</option>
+            <option>A+</option><option>A-</option>
+            <option>B+</option><option>B-</option>
+            <option>O+</option><option>O-</option>
+            <option>AB+</option><option>AB-</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-600 mb-1">Doctor</label>
+          <input type="text" id="doctor" placeholder="Dr. Santos"
+            class="w-full border border-gray-200 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-600 mb-1">Allergies</label>
+          <input type="text" id="allergies" placeholder="None"
+            class="w-full border border-gray-200 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-600 mb-1">Medicines</label>
+          <input type="text" id="medicines" placeholder="Paracetamol, Amoxicillin"
+            class="w-full border border-gray-200 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+
+      </div>
+
+      <div class="mb-6">
+        <label class="block text-sm font-medium text-gray-600 mb-1">Medical History</label>
+        <textarea id="medical_history" rows="3" placeholder="No known conditions..."
+          class="w-full border border-gray-200 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+        ></textarea>
+      </div>
+
+      <!-- Buttons -->
+      <div class="flex gap-3">
+        <button id="submit-btn" onclick="savePatient()"
+          class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-6 py-2 rounded-lg transition"
+        >
+          Save Changes
+        </button>
+        <a href="index.html"
+          class="bg-gray-100 hover:bg-gray-200 text-gray-600 text-sm font-medium px-6 py-2 rounded-lg transition"
+        >
+          Cancel
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="js/app.js"></script>
+  <script src="components/sidebar.js"></script>
+  <script src="js/edit.js"></script>
+
+</body>
+</html>
