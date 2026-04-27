@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Patient Information System</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+
+  <div class="bg-white rounded-2xl shadow-md p-8 w-full max-w-sm">
+
+    <!-- Header -->
+    <div class="text-center mb-8">
+      <h1 class="text-xl font-semibold text-gray-800">Patient Information System</h1>
+      <p class="text-sm text-gray-400 mt-1">Sign in to continue</p>
+    </div>
+
+    <!-- Username -->
+    <div class="mb-4">
+      <label class="block text-sm font-medium text-gray-600 mb-1">Username</label>
+      <input
+        type="text"
+        id="username"
+        placeholder="Enter username"
+        class="w-full border border-gray-200 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+    </div>
+
+    <!-- Password -->
+    <div class="mb-5">
+      <label class="block text-sm font-medium text-gray-600 mb-1">Password</label>
+      <input
+        type="password"
+        id="password"
+        placeholder="Enter password"
+        class="w-full border border-gray-200 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+    </div>
+
+    <!-- Error -->
+    <p id="error-msg" class="text-red-500 text-xs mb-4 hidden"></p>
+
+    <!-- Button -->
+    <button
+      id="login-btn"
+      onclick="handleLogin()"
+      class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded-lg text-sm transition"
+    >
+      Sign In
+    </button>
+
+  </div>
+
+  <script src="js/app.js"></script>
+  <script src="js/login.js"></script>
+
+</body>
+</html>
