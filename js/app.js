@@ -46,6 +46,39 @@ async function login(username, password) {
   return { ok: res.ok, data: await res.json() };
 }
 
+async function getAllUsers() {
+  const res = await fetch(`${API}/users`, {
+    headers: headers(),
+  });
+  return res.json();
+}
+
+async function registerUser(data) {
+  const res = await fetch(`${API}/users/register`, {
+    method: "POST",
+    headers: headers(),
+    body: JSON.stringify(data),
+  });
+  return { ok: res.ok, data: await res.json() };
+}
+
+async function updateUser(id, data) {
+  const res = await fetch(`${API}/users/${id}`, {
+    method: "PUT",
+    headers: headers(),
+    body: JSON.stringify(data),
+  });
+  return { ok: res.ok, data: await res.json() };
+}
+
+async function deleteUser(id) {
+  const res = await fetch(`${API}/users/${id}`, {
+    method: "DELETE",
+    headers: headers(),
+  });
+  return res.json();
+}
+
 // ─── Persons ────────────────────────────────────
 async function createPerson(data) {
   const res = await fetch(`${API}/persons`, {
