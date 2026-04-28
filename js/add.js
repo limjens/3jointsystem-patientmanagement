@@ -5,7 +5,7 @@ renderSidebar("Patients");
 async function addPatient() {
   const errorMsg = document.getElementById("error-msg");
   const successMsg = document.getElementById("success-msg");
-  const btn = document.getElementById("submit-btn");
+  const btn = event.currentTarget;
 
   errorMsg.classList.add("hidden");
   successMsg.classList.add("hidden");
@@ -30,8 +30,16 @@ async function addPatient() {
     return;
   }
 
+  // Save original text
+  const originalText = btn.innerHTML;
+
   // Loading state
-  btn.textContent = "Saving...";
+  btn.innerHTML = `
+    <svg class="w-4 h-4 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+    </svg>
+    Saving...
+  `;
   btn.disabled = true;
 
   try {
@@ -41,7 +49,7 @@ async function addPatient() {
     if (!person.id) {
       errorMsg.textContent = "Failed to create person record";
       errorMsg.classList.remove("hidden");
-      btn.textContent = "Add Patient";
+      btn.innerHTML = originalText;
       btn.disabled = false;
       return;
     }
@@ -59,7 +67,7 @@ async function addPatient() {
     if (!patient.id) {
       errorMsg.textContent = "Failed to create patient record";
       errorMsg.classList.remove("hidden");
-      btn.textContent = "Add Patient";
+      btn.innerHTML = originalText;
       btn.disabled = false;
       return;
     }
@@ -73,10 +81,11 @@ async function addPatient() {
       window.location.href = "index.html";
     }, 1500);
   } catch (err) {
+    console.error("Error:", err);
     errorMsg.textContent =
       "Cannot connect to server. Make sure the API is running.";
     errorMsg.classList.remove("hidden");
-    btn.textContent = "Add Patient";
+    btn.innerHTML = originalText;
     btn.disabled = false;
   }
 }

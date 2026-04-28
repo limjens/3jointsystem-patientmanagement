@@ -6,15 +6,8 @@
   <title>Edit User - Patient Information System</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif; }
   </style>
 </head>
 <body class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen flex">
@@ -22,6 +15,7 @@
   <div id="sidebar"></div>
 
   <main class="flex-1 ml-64 p-8">
+
     <!-- Page Header -->
     <div class="mb-8">
       <div class="flex items-center gap-3 mb-2">
@@ -46,7 +40,7 @@
     <!-- Form Card -->
     <div class="max-w-2xl">
       <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
-        
+
         <!-- Card Header -->
         <div class="px-6 py-4 border-b border-gray-100 bg-gradient-to-r from-purple-50 to-white">
           <div class="flex items-center gap-2">
@@ -60,7 +54,8 @@
 
         <!-- Card Body -->
         <div class="p-6">
-          <!-- Messages -->
+
+          <!-- Error Message -->
           <div id="error-msg" class="hidden mb-6 p-3 rounded-lg bg-red-50 border border-red-200">
             <div class="flex items-center gap-2">
               <svg class="w-4 h-4 text-red-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -69,7 +64,8 @@
               <p id="error-text" class="text-red-600 text-sm"></p>
             </div>
           </div>
-          
+
+          <!-- Success Message -->
           <div id="success-msg" class="hidden mb-6 p-3 rounded-lg bg-green-50 border border-green-200">
             <div class="flex items-center gap-2">
               <svg class="w-4 h-4 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -81,7 +77,8 @@
 
           <!-- Form Fields -->
           <div class="space-y-5">
-            <!-- Username Field (Disabled - cannot change username) -->
+
+            <!-- Username -->
             <div>
               <label class="block text-sm font-medium text-gray-700 mb-2">
                 Username <span class="text-red-500">*</span>
@@ -100,7 +97,7 @@
               <p class="text-xs text-gray-500 mt-1">Username cannot be changed</p>
             </div>
 
-            <!-- Password Field -->
+            <!-- Password -->
             <div>
               <label class="block text-sm font-medium text-gray-700 mb-2">
                 New Password
@@ -125,7 +122,7 @@
               <p class="text-xs text-gray-500 mt-1">Minimum 6 characters recommended</p>
             </div>
 
-            <!-- Role Field -->
+            <!-- Role -->
             <div>
               <label class="block text-sm font-medium text-gray-700 mb-2">
                 Role <span class="text-red-500">*</span>
@@ -150,8 +147,8 @@
                   </svg>
                 </div>
               </div>
-              <p class="text-xs text-gray-500 mt-1">Role determines system access permissions</p>
             </div>
+
           </div>
 
           <!-- Role Info Cards -->
@@ -173,24 +170,25 @@
             </div>
           </div>
 
-          <!-- Warning for Admin Role -->
+          <!-- Warning -->
           <div class="mt-4 p-3 bg-yellow-50 rounded-lg border border-yellow-200">
             <div class="flex items-start gap-2">
               <svg class="w-5 h-5 text-yellow-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
               </svg>
-              <div class="flex-1">
+              <div>
                 <p class="text-xs font-medium text-yellow-700">Important Note</p>
                 <p class="text-xs text-yellow-600 mt-1">Changing a user's role will affect their permissions immediately.</p>
               </div>
             </div>
           </div>
+
         </div>
 
         <!-- Card Footer -->
-        <div class="px-6 py-4 border-t border-gray-100 bg-gray-50/50 flex gap-3">
+        <div class="px-6 py-4 border-t border-gray-100 bg-gray-50 flex gap-3">
           <button id="submit-btn" onclick="saveUser()"
-            class="flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium px-6 py-2.5 rounded-lg transition-all shadow-sm hover:shadow-md transform hover:-translate-y-0.5"
+            class="flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium px-6 py-2.5 rounded-lg transition-all shadow-sm hover:shadow-md"
           >
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
@@ -198,28 +196,27 @@
             Save Changes
           </button>
           <a href="users.html"
-            class="flex items-center gap-2 bg-white hover:bg-gray-50 text-gray-600 text-sm font-medium px-6 py-2.5 rounded-lg transition-all border border-gray-300 hover:border-gray-400"
+            class="flex items-center gap-2 bg-white hover:bg-gray-50 text-gray-600 text-sm font-medium px-6 py-2.5 rounded-lg transition-all border border-gray-300"
           >
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
             </svg>
             Cancel
-          </button>
+          </a>
         </div>
+
       </div>
     </div>
+
   </main>
 
   <script src="js/app.js"></script>
   <script src="components/sidebar.js"></script>
   <script src="js/edit-user.js"></script>
-
   <script>
-    // Toggle password visibility
     function togglePassword() {
-      const passwordInput = document.getElementById('password');
-      const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-      passwordInput.setAttribute('type', type);
+      const input = document.getElementById('password')
+      input.type  = input.type === 'password' ? 'text' : 'password'
     }
   </script>
 
